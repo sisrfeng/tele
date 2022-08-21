@@ -1,21 +1,9 @@
+
 ================================================================================
-*telescope.nvim*
 
-Telescope.nvim is a plugin for fuzzy finding and neovim. It helps you search,
-filter, find and pick things in Lua.
+TOC
 
-Getting started with telescope:
-  1. Run `:checkhealth telescope` to make sure everything is installed.
-  2. Evalulate it working with `:Telescope find_files` or `:lua  require("telescope.builtin").find_files()`
-  3. Put a `require("telescope").setup() call somewhere in your neovim config.
-  4. Read |telescope.setup| to check what config keys are available and what
-     you can put inside the setup call
-  5. Read |telescope.builtin| to check which builtin pickers are offered and
-     what options these implement
-  6. Profit
-
-To find out more:
-https://github.com/nvim-telescope/telescope.nvim
+    https://github.com/nvim-telescope/telescope.nvim
 
       :h telescope.setup
       :h telescope.command
@@ -31,20 +19,38 @@ https://github.com/nvim-telescope/telescope.nvim
       :h telescope.previewers
       :h telescope.actions.history
 
+
+
+*telescope.nvim*
+
+Telescope.nvim is a plugin for fuzzy finding and neovim.
+
+Getting started with telescope:
+  1. Run `:checkhealth telescope` to make sure everything is installed.
+  2. Evalulate it working with `:Telescope find_files` or `:lua  require("telescope.builtin").find_files()`
+  3. Put a `require("telescope").setup()` call somewhere in your neovim config.
+  4. Read |telescope.setup| to check what config keys are available and what
+     you can put inside the setup call
+  5. Read |telescope.builtin| to check which
+     builtin pickers are offered and
+     what options these implement
+
+
 telescope.setup({opts})                                    *telescope.setup()*
     Setup function to be run by user.
-    Configures the defaults, pickers and  extensions of telescope.
+    Configures the defaults,
+    pickers and  extensions of telescope.
 
     Usage:
 
 
     require('telescope').setup{
-      defaults = {
+    defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
         -- ..
-      },
-      pickers = {
+    },
+    pickers = {
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
         --   picker_config_key = value,
@@ -52,21 +58,21 @@ telescope.setup({opts})                                    *telescope.setup()*
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
-      },
-      extensions = {
+    },
+    extensions = {
         -- Your extension configuration goes here:
         -- extension_name = {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
-      }
+    }
     }
 
 
 
     Valid keys for {opts.defaults}
 
-                                      *telescope.defaults.sorting_strategy*
+                                    *telescope.defaults.sorting_strategy*
     sorting_strategy:
         Determines the direction "better" results are sorted towards.
 
@@ -376,11 +382,15 @@ telescope.setup({opts})                                    *telescope.setup()*
 *telescope.defaults.preview*
     preview:
         This field handles the global configuration for previewers.
-        By default it is a table, with default values (more below).
-        To disable previewing, set it to false. If you have disabled previewers
-        globally, but want to opt in to previewing for single pickers, you will have to
-        pass `preview = true` or `preview = {...}` (your config) to the `opts` of
-        your picker.
+        By default it is a table,
+            with default values (more below).
+        To disable previewing,
+            set it to false.
+
+        If you have disabled previewers  globally,
+        but want to opt in to previewing for single pickers,
+        you will have to
+            pass `preview = true` or `preview = {...}` (your config) to the `opts` of  your picker.
 
         Fields:
           - check_mime_type:  Use `file` if available to try to infer whether the
@@ -444,6 +454,7 @@ telescope.setup({opts})                                    *telescope.setup()*
                               2) Register your filetype locally as per link
                                  https://github.com/nvim-lua/plenary.nvim#plenaryfiletype
                               Default: nil
+
           - treesitter:       Determines whether the previewer performs treesitter
                               highlighting, which falls back to regex-based highlighting.
                               `true`: treesitter highlighting for all available filetypes
@@ -460,12 +471,12 @@ telescope.setup({opts})                                    *telescope.setup()*
 
                                      *telescope.defaults.vimgrep_arguments*
     vimgrep_arguments:
-        Defines the command that will be used for `live_grep` and `grep_string`
-        pickers.
-        Hint: Make sure that color is currently set to `never` because we do
-        not yet interpret color codes
-        Hint 2: Make sure that these options are in your changes arguments:
+        Defines the command that will be used for `live_grep` and `grep_string`  pickers.
+        Make sure that color is currently set to `never` because we do
+                not yet interpret color codes
+        Make sure that these options are in your changes arguments:
           "--no-heading", "--with-filename", "--line-number", "--column"
+
         because we need them so the ripgrep output is in the correct format.
 
         Default: {
@@ -487,8 +498,9 @@ telescope.setup({opts})                                    *telescope.setup()*
 
 *telescope.defaults.set_env*
     set_env:
-        Set an environment for term_previewer. A table of key values:
-        Example: { COLORTERM = "truecolor", ... }
+        Set an environment for term_previewer.
+        A table of key values:
+            Example: { COLORTERM = "truecolor", ... }
         Hint: Empty table is not allowed.
 
         Default: nil
@@ -602,7 +614,7 @@ telescope.setup({opts})                                    *telescope.setup()*
 
                                   *telescope.defaults.file_ignore_patterns*
     file_ignore_patterns:
-        A table of lua regex that define the files that should be ignored.
+        A table of ¿lua regex¿ that define the files that should be ignored.
         Example: { "^scratch/" } -- ignore all files in scratch directory
         Example: { "%.npz" } -- ignore all npz files
         See: https://www.lua.org/manual/5.1/manual.html#5.4.1 for more
@@ -719,815 +731,818 @@ as there are spaces in the option.
 ================================================================================
 *telescope.builtin*
 
-Telescope Builtins is a collection of community maintained pickers to support
-common workflows. It can be used as reference when writing PRs, Telescope
-extensions, your own custom pickers, or just as a discovery tool for all of the
-amazing pickers already shipped with Telescope!
-
-Any of these functions can just be called directly by doing:
-
-:lua require('telescope.builtin').$NAME_OF_PICKER()
-
-To use any of Telescope's default options or any picker-specific options, call
-your desired picker by passing a lua table to the picker with all of the
-options you want to use. Here's an example with the live_grep picker:
-
-
-  :lua require('telescope.builtin').live_grep({
-    prompt_title = 'find string in open buffers...',
-    grep_open_files = true
-  })
-  -- or with dropdown theme
-  :lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{
-    previewer = false
-  })
-
-
-builtin.live_grep({opts})                      *telescope.builtin.live_grep()*
-    Search for a string and get results live as you type (respecting
-    .gitignore)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}                 (string)    root dir to search from (default:
-                                          cwd, use utils.buffer_dir() to
-                                          search relative to open buffer)
-        {grep_open_files}     (boolean)   if true, restrict search to open
-                                          files only, mutually exclusive with
-                                          `search_dirs`
-        {search_dirs}         (table)     directory/directories to search in,
-                                          mutually exclusive with
-                                          `grep_open_files`
-        {glob_pattern}        (string)    argument to be used with `--glob`,
-                                          e.g. "*.toml", can use the opposite
-                                          "!*.toml"
-        {type_filter}         (string)    argument to be used with `--type`,
-                                          e.g. "rust", see `rg --type-list`
-        {additional_args}     (function)  function(opts) which returns a table
-                                          of additional arguments to be passed
-                                          on
-        {max_results}         (number)    define a upper result value
-        {disable_coordinates} (boolean)   don't show the line & row numbers
-                                          (default: false)
-
-
-builtin.grep_string({opts})                  *telescope.builtin.grep_string()*
-    Searches for the string under your cursor in your current working directory
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}                 (string)    root dir to search from (default:
-                                          cwd, use utils.buffer_dir() to
-                                          search relative to open buffer)
-        {search}              (string)    the query to search
-        {search_dirs}         (table)     directory/directories to search in
-        {use_regex}           (boolean)   if true, special characters won't be
-                                          escaped, allows for using regex
-                                          (default: false)
-        {word_match}          (string)    can be set to `-w` to enable exact
-                                          word matches
-        {additional_args}     (function)  function(opts) which returns a table
-                                          of additional arguments to be passed
-                                          on
-        {disable_coordinates} (boolean)   don't show the line and row numbers
-                                          (default: false)
-        {sort_only_text}      (boolean)   only sort the text, not the file,
-                                          line or row (default: false)
-
-
-builtin.find_files({opts})                    *telescope.builtin.find_files()*
-    Search for files (respecting .gitignore)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   root dir to search from (default: cwd, use
-                                  utils.buffer_dir() to search relative to
-                                  open buffer)
-        {find_command} (table)    command line arguments for `find_files` to
-                                  use for the search, overrides default:
-                                  config
-        {follow}       (boolean)  if true, follows symlinks (i.e. uses `-L`
-                                  flag for the `find` command)
-        {hidden}       (boolean)  determines whether to show hidden files or
-                                  not (default: false)
-        {no_ignore}    (boolean)  show files ignored by .gitignore, .ignore,
-                                  etc. (default: false)
-        {search_dirs}  (table)    directory/directories to search in
-
-
-builtin.fd()                                          *telescope.builtin.fd()*
-    This is an alias for the `find_files` picker
-
-
-
-builtin.treesitter()                          *telescope.builtin.treesitter()*
-    Lists function names, variables, and other symbols from treesitter queries
-    - Default keymaps:
-      - `<C-l>`: show autocompletion menu to prefilter your query by kind of ts
-        node you want to see (i.e. `:var:`)
-
-
-    Options:
-        {show_line}         (boolean)  if true, shows the row:column that the
-                                       result is found at (default: true)
-        {bufnr}             (number)   specify the buffer number where
-                                       treesitter should run. (default:
-                                       current buffer)
-        {symbol_highlights} (table)    string -> string. Matches symbol with
-                                       hl_group
-
-
-builtin.current_buffer_fuzzy_find({opts}) *telescope.builtin.current_buffer_fuzzy_find()*
-    Live fuzzy search inside of the currently open buffer
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {skip_empty_lines} (boolean)  if true we dont display empty lines
-                                      (default: false)
-
-
-builtin.tags({opts})                                *telescope.builtin.tags()*
-    Lists tags in current directory with tag location file preview (users are
-    required to run ctags -R to generate tags or update when introducing new
-    changes)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}            (string)   root dir to search from (default: cwd, use
-                                    utils.buffer_dir() to search relative to
-                                    open buffer)
-        {ctags_file}     (string)   specify a particular ctags file to use
-        {show_line}      (boolean)  if true, shows the content of the line the
-                                    tag is found on in the picker (default:
-                                    true)
-        {only_sort_tags} (boolean)  if true we will only sort tags (default:
-                                    false)
-        {fname_width}    (number)   defines the width of the filename section
-                                    (default: 30)
-
-
-builtin.current_buffer_tags({opts})  *telescope.builtin.current_buffer_tags()*
-    Lists all of the tags for the currently open buffer, with a preview
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}            (string)   root dir to search from (default: cwd, use
-                                    utils.buffer_dir() to search relative to
-                                    open buffer)
-        {ctags_file}     (string)   specify a particular ctags file to use
-        {show_line}      (boolean)  if true, shows the content of the line the
-                                    tag is found on in the picker (default:
-                                    true)
-        {only_sort_tags} (boolean)  if true we will only sort tags (default:
-                                    false)
-        {fname_width}    (number)   defines the width of the filename section
-                                    (default: 30)
-
-
-builtin.git_files({opts})                      *telescope.builtin.git_files()*
-    Fuzzy search for files tracked by Git. This command lists the output of the
-    `git ls-files` command, respects .gitignore, and optionally ignores
-    untracked files
-    - Default keymaps:
-      - `<cr>`: opens the currently selected file
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}                (string)   specify the path of the repo
-        {use_git_root}       (boolean)  if we should use git root as cwd or
-                                        the cwd (important for submodule)
-                                        (default: true)
-        {show_untracked}     (boolean)  if true, adds `--others` flag to
-                                        command and shows untracked files
-                                        (default: true)
-        {recurse_submodules} (boolean)  if true, adds the
-                                        `--recurse-submodules` flag to command
-                                        (default: false)
-        {git_command}        (table)    command that will be exectued.
-                                        {"git","ls-files","--exclude-standard","--cached"}
-
-
-builtin.git_commits({opts})                  *telescope.builtin.git_commits()*
-    Lists commits for current directory with diff preview
-    - Default keymaps:
-      - `<cr>`: checks out the currently selected commit
-      - `<C-r>m`: resets current branch to selected commit using mixed mode
-      - `<C-r>s`: resets current branch to selected commit using soft mode
-      - `<C-r>h`: resets current branch to selected commit using hard mode
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   specify the path of the repo
-        {use_git_root} (boolean)  if we should use git root as cwd or the cwd
-                                  (important for submodule) (default: true)
-        {git_command}  (table)    command that will be exectued.
-                                  {"git","log","--pretty=oneline","--abbrev-commit","--","."}
-
-
-builtin.git_bcommits({opts})                *telescope.builtin.git_bcommits()*
-    Lists commits for current buffer with diff preview
-    - Default keymaps or your overriden `select_` keys:
-      - `<cr>`: checks out the currently selected commit
-      - `<c-v>`: opens a diff in a vertical split
-      - `<c-x>`: opens a diff in a horizontal split
-      - `<c-t>`: opens a diff in a new tab
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   specify the path of the repo
-        {use_git_root} (boolean)  if we should use git root as cwd or the cwd
-                                  (important for submodule) (default: true)
-        {current_file} (string)   specify the current file that should be used
-                                  for bcommits (default: current buffer)
-        {git_command}  (table)    command that will be exectued.
-                                  {"git","log","--pretty=oneline","--abbrev-commit"}
-
-
-builtin.git_branches({opts})                *telescope.builtin.git_branches()*
-    List branches for current directory, with output from `git log --oneline`
-    shown in the preview window
-    - Default keymaps:
-      - `<cr>`: checks out the currently selected branch
-      - `<C-t>`: tracks currently selected branch
-      - `<C-r>`: rebases currently selected branch
-      - `<C-a>`: creates a new branch, with confirmation prompt before creation
-      - `<C-d>`: deletes the currently selected branch, with confirmation
-        prompt before deletion
-      - `<C-y>`: merges the currently selected branch, with confirmation prompt
-        before deletion
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   specify the path of the repo
-        {use_git_root} (boolean)  if we should use git root as cwd or the cwd
-                                  (important for submodule) (default: true)
-        {pattern}      (string)   specify the pattern to match all refs
-
-
-builtin.git_status({opts})                    *telescope.builtin.git_status()*
-    Lists git status for current directory
-    - Default keymaps:
-      - `<Tab>`: stages or unstages the currently selected file
-      - `<cr>`: opens the currently selected file
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   specify the path of the repo
-        {use_git_root} (boolean)  if we should use git root as cwd or the cwd
-                                  (important for submodule) (default: true)
-        {git_icons}    (table)    string -> string. Matches name with icon
-                                  (see source code, make_entry.lua
-                                  git_icon_defaults)
-
-
-builtin.git_stash({opts})                      *telescope.builtin.git_stash()*
-    Lists stash items in current repository
-    - Default keymaps:
-      - `<cr>`: runs `git apply` for currently selected stash
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cwd}          (string)   specify the path of the repo
-        {use_git_root} (boolean)  if we should use git root as cwd or the cwd
-                                  (important for submodule) (default: true)
-        {show_branch}  (boolean)  if we should display the branch name for git
-                                  stash entries (default: true)
-
-
-builtin.builtin({opts})                          *telescope.builtin.builtin()*
-    Lists all of the community maintained pickers built into Telescope
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {include_extensions} (boolean)  if true will show the pickers of the
-                                        installed extensions (default: false)
-
-
-builtin.resume({opts})                            *telescope.builtin.resume()*
-    Opens the previous picker in the identical state (incl. multi selections)
-    - Notes:
-      - Requires `cache_picker` in setup or when having invoked pickers, see
-        |telescope.defaults.cache_picker|
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {cache_index} (number)  what picker to resume, where 1 denotes most
-                                recent (default: 1)
-
-
-builtin.pickers({opts})                          *telescope.builtin.pickers()*
-    Opens a picker over previously cached pickers in their preserved states
-    (incl. multi selections)
-    - Default keymaps:
-      - `<C-x>`: delete the selected cached picker
-    - Notes:
-      - Requires `cache_picker` in setup or when having invoked pickers, see
-        |telescope.defaults.cache_picker|
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.planets({opts})                          *telescope.builtin.planets()*
-    Use the telescope...
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {show_pluto} (boolean)  we love pluto (default: false, because its a
-                                hidden feature)
-
-
-builtin.symbols({opts})                          *telescope.builtin.symbols()*
-    Lists symbols inside of `data/telescope-sources/*.json` found in your
-    runtime path or found in `stdpath("data")/telescope/symbols/*.json`. The
-    second path can be customized. We provide a couple of default symbols which
-    can be found in https://github.com/nvim-telescope/telescope-symbols.nvim.
-    This repos README also provides more information about the format in which
-    the symbols have to be.
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {symbol_path} (string)  specify the second path. Default:
-                                `stdpath("data")/telescope/symbols/*.json`
-        {sources}     (table)   specify a table of sources you want to load
-                                this time
-
-
-builtin.commands({opts})                        *telescope.builtin.commands()*
-    Lists available plugin/user commands and runs them on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {show_buf_command} (boolean)  show buf local command (Default: true)
-
-
-builtin.quickfix({opts})                        *telescope.builtin.quickfix()*
-    Lists items in the quickfix list, jumps to location on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-        {nr}              (number)   specify the quickfix list number
-
-
-builtin.quickfixhistory({opts})          *telescope.builtin.quickfixhistory()*
-    Lists all quickfix lists in your history and open them with
-    `builtin.quickfix`. It seems that neovim only keeps the full history for 10
-    lists
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.loclist({opts})                          *telescope.builtin.loclist()*
-    Lists items from the current window's location list, jumps to location on
-    `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.oldfiles({opts})                        *telescope.builtin.oldfiles()*
-    Lists previously open files, opens on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {only_cwd} (boolean)  show only files in the cwd (default: false)
-        {cwd_only} (boolean)  alias for only_cwd
-
-
-builtin.command_history({opts})          *telescope.builtin.command_history()*
-    Lists commands that were executed recently, and reruns them on `<cr>`
-    - Default keymaps:
-      - `<C-e>`: open the command line with the text of the currently selected
-        result populated in it
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.search_history({opts})            *telescope.builtin.search_history()*
-    Lists searches that were executed recently, and reruns them on `<cr>`
-    - Default keymaps:
-      - `<C-e>`: open a search window with the text of the currently selected
-        search result populated in it
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.vim_options({opts})                  *telescope.builtin.vim_options()*
-    Lists vim options, allows you to edit the current value on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.help_tags({opts})                      *telescope.builtin.help_tags()*
-    Lists available help tags and opens a new window with the relevant help
-    info on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {lang}     (string)   specify language (default: vim.o.helplang)
-        {fallback} (boolean)  fallback to en if language isn't installed
-                              (default: true)
-
-
-builtin.man_pages({opts})                      *telescope.builtin.man_pages()*
-    Lists manpage entries, opens them in a help window on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {sections} (table)     a list of sections to search, use `{ "ALL" }`
-                               to search in all sections (default: { "1" })
-        {man_cmd}  (function)  that returns the man command. (Default:
-                               `apropos ""` on linux, `apropos " "` on macos)
-
-
-builtin.reloader({opts})                        *telescope.builtin.reloader()*
-    Lists lua modules and reloads them on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {column_len} (number)  define the max column len for the module name
-                               (default: dynamic, longest module name)
-
-
-builtin.buffers({opts})                          *telescope.builtin.buffers()*
-    Lists open buffers in current neovim instance, opens selected buffer on
-    `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {show_all_buffers}      (boolean)  if true, show all buffers,
-                                           including unloaded buffers
-                                           (default: true)
-        {ignore_current_buffer} (boolean)  if true, don't show the current
-                                           buffer in the list (default: false)
-        {only_cwd}              (boolean)  if true, only show buffers in the
-                                           current working directory (default:
-                                           false)
-        {cwd_only}              (boolean)  alias for only_cwd
-        {sort_lastused}         (boolean)  Sorts current and last buffer to
-                                           the top and selects the lastused
-                                           (default: false)
-        {sort_mru}              (boolean)  Sorts all buffers after most recent
-                                           used. Not just the current and last
-                                           one (default: false)
-        {bufnr_width}           (number)   Defines the width of the buffer
-                                           numbers in front of the filenames
-                                           (default: dynamic)
-
-
-builtin.colorscheme({opts})                  *telescope.builtin.colorscheme()*
-    Lists available colorschemes and applies them on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {enable_preview} (boolean)  if true, will preview the selected color
-
-
-builtin.marks({opts})                              *telescope.builtin.marks()*
-    Lists vim marks and their value, jumps to the mark on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.registers({opts})                      *telescope.builtin.registers()*
-    Lists vim registers, pastes the contents of the register on `<cr>`
-    - Default keymaps:
-      - `<C-e>`: edit the contents of the currently selected register
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.keymaps({opts})                          *telescope.builtin.keymaps()*
-    Lists normal mode keymappings, runs the selected keymap on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {modes}     (table)    a list of short-named keymap modes to search
-                               (default: { "n", "i", "c", "x" })
-        {show_plug} (boolean)  if true, the keymaps for which the lhs contains
-                               "<Plug>" are also shown (default: true)
-
-
-builtin.filetypes({opts})                      *telescope.builtin.filetypes()*
-    Lists all available filetypes, sets currently open buffer's filetype to
-    selected filetype in Telescope on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.highlights({opts})                    *telescope.builtin.highlights()*
-    Lists all available highlights
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.autocommands({opts})                *telescope.builtin.autocommands()*
-    Lists vim autocommands and goes to their declaration on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.spell_suggest({opts})              *telescope.builtin.spell_suggest()*
-    Lists spelling suggestions for the current word under the cursor, replaces
-    word with selected suggestion on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-
-builtin.tagstack({opts})                        *telescope.builtin.tagstack()*
-    Lists the tag stack for the current window, jumps to tag on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.jumplist({opts})                        *telescope.builtin.jumplist()*
-    Lists items from Vim's jumplist, jumps to location on `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.lsp_references({opts})            *telescope.builtin.lsp_references()*
-    Lists LSP references for word under the cursor, jumps to reference on
-    `<cr>`
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {include_declaration}  (boolean)  include symbol declaration in the
-                                          lsp references (default: true)
-        {include_current_line} (boolean)  include current line (default:
-                                          false)
-        {trim_text}            (boolean)  trim results text (default: false)
-
-
-builtin.lsp_definitions({opts})          *telescope.builtin.lsp_definitions()*
-    Goto the definition of the word under the cursor, if there's only one,
-    otherwise show all options in Telescope
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {jump_type}       (string)   how to goto definition if there is only
-                                     one, values: "tab", "split", "vsplit",
-                                     "never"
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.lsp_type_definitions({opts}) *telescope.builtin.lsp_type_definitions()*
-    Goto the definition of the type of the word under the cursor, if there's
-    only one, otherwise show all options in Telescope
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {jump_type}       (string)   how to goto definition if there is only
-                                     one, values: "tab", "split", "vsplit",
-                                     "never"
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.lsp_implementations({opts})  *telescope.builtin.lsp_implementations()*
-    Goto the implementation of the word under the cursor if there's only one,
-    otherwise show all options in Telescope
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {jump_type}       (string)   how to goto implementation if there is
-                                     only one, values: "tab", "split",
-                                     "vsplit", "never"
-        {ignore_filename} (boolean)  dont show filenames (default: true)
-        {trim_text}       (boolean)  trim results text (default: false)
-
-
-builtin.lsp_document_symbols({opts}) *telescope.builtin.lsp_document_symbols()*
-    Lists LSP document symbols in the current buffer
-    - Default keymaps:
-      - `<C-l>`: show autocompletion menu to prefilter your query by type of
-        symbol you want to see (i.e. `:variable:`)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename}   (boolean)       dont show filenames (default:
-                                            true)
-        {show_line}         (boolean)       if true, shows the content of the
-                                            line the tag is found on (default:
-                                            false)
-        {symbols}           (string|table)  filter results by symbol kind(s)
-        {ignore_symbols}    (string|table)  list of symbols to ignore
-        {symbol_highlights} (table)         string -> string. Matches symbol
-                                            with hl_group
-
-
-builtin.lsp_workspace_symbols({opts}) *telescope.builtin.lsp_workspace_symbols()*
-    Lists LSP document symbols in the current workspace
-    - Default keymaps:
-      - `<C-l>`: show autocompletion menu to prefilter your query by type of
-        symbol you want to see (i.e. `:variable:`)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {query}             (string)        for what to query the workspace
-                                            (default: "")
-        {ignore_filename}   (boolean)       dont show filenames (default:
-                                            false)
-        {show_line}         (boolean)       if true, shows the content of the
-                                            line the tag is found on (default:
-                                            false)
-        {symbols}           (string|table)  filter results by symbol kind(s)
-        {ignore_symbols}    (string|table)  list of symbols to ignore
-        {symbol_highlights} (table)         string -> string. Matches symbol
-                                            with hl_group
-
-
-builtin.lsp_dynamic_workspace_symbols({opts}) *telescope.builtin.lsp_dynamic_workspace_symbols()*
-    Dynamically lists LSP for all workspace symbols
-    - Default keymaps:
-      - `<C-l>`: show autocompletion menu to prefilter your query by type of
-        symbol you want to see (i.e. `:variable:`)
-
-
-    Parameters:
-        {opts} (table)  options to pass to the picker
-
-    Options:
-        {ignore_filename}   (boolean)       dont show filenames (default:
-                                            false)
-        {show_line}         (boolean)       if true, shows the content of the
-                                            line the symbol is found on
+    Telescope Builtins is a collection of community maintained pickers to support common workflows.
+    It can be used as reference when writing PRs,
+    Telescope extensions,
+    your own custom pickers,
+    or just as a discovery tool for all of the amazing pickers already shipped with Telescope!
+
+
+    Any of these functions can just be called directly by doing:
+
+    :lua require('telescope.builtin').$NAME_OF_PICKER()
+
+    To use any of Telescope's default options or any picker-specific options, call
+    your desired picker by passing a lua table to the picker with all of the
+    options you want to use. Here's an example with the live_grep picker:
+
+
+    :lua require('telescope.builtin').live_grep({
+        prompt_title = 'find string in open buffers...',
+        grep_open_files = true
+    })
+    -- or with dropdown theme
+    :lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{
+        previewer = false
+    })
+
+
+    builtin.live_grep({opts})                      *telescope.builtin.live_grep()*
+        Search for a string and get results live as you type (respecting
+        .gitignore)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}                 (string)    root dir to search from (default:
+                                            cwd, use utils.buffer_dir() to
+                                            search relative to open buffer)
+            {grep_open_files}     (boolean)   if true, restrict search to open
+                                            files only, mutually exclusive with
+                                            `search_dirs`
+            {search_dirs}         (table)     directory/directories to search in,
+                                            mutually exclusive with
+                                            `grep_open_files`
+            {glob_pattern}        (string)    argument to be used with `--glob`,
+                                            e.g. "*.toml", can use the opposite
+                                            "!*.toml"
+            {type_filter}         (string)    argument to be used with `--type`,
+                                            e.g. "rust", see `rg --type-list`
+            {additional_args}     (function)  function(opts) which returns a table
+                                            of additional arguments to be passed
+                                            on
+            {max_results}         (number)    define a upper result value
+            {disable_coordinates} (boolean)   don't show the line & row numbers
                                             (default: false)
-        {symbols}           (string|table)  filter results by symbol kind(s)
-        {ignore_symbols}    (string|table)  list of symbols to ignore
-        {symbol_highlights} (table)         string -> string. Matches symbol
-                                            with hl_group
 
 
-builtin.diagnostics({opts})                  *telescope.builtin.diagnostics()*
-    Lists diagnostics
-    - Fields:
-      - `All severity flags can be passed as `string` or `number` as per
-        `:vim.diagnostic.severity:`
-    - Default keymaps:
-      - `<C-l>`: show autocompletion menu to prefilter your query with the
-        diagnostic you want to see (i.e. `:warning:`)
+    builtin.grep_string({opts})                  *telescope.builtin.grep_string()*
+        Searches for the string under your cursor in your current working directory
 
 
-    Parameters:
-        {opts} (table)  options to pass to the picker
+        Parameters:
+            {opts} (table)  options to pass to the picker
 
-    Options:
-        {bufnr}          (string|number)   if nil get diagnostics for all open
-                                           buffers. Use 0 for current buffer
-        {severity}       (string|number)   filter diagnostics by severity name
-                                           (string) or id (number)
-        {severity_limit} (string|number)   keep diagnostics equal or more
-                                           severe wrt severity name (string)
-                                           or id (number)
-        {severity_bound} (string|number)   keep diagnostics equal or less
-                                           severe wrt severity name (string)
-                                           or id (number)
-        {root_dir}       (string|boolean)  if set to string, get diagnostics
-                                           only for buffers under this dir
-                                           otherwise cwd
-        {no_unlisted}    (boolean)         if true, get diagnostics only for
-                                           listed buffers
-        {no_sign}        (boolean)         hide DiagnosticSigns from Results
-                                           (default: false)
-        {line_width}     (number)          set length of diagnostic entry text
-                                           in Results
-        {namespace}      (number)          limit your diagnostics to a
-                                           specific namespace
+        Options:
+            {cwd}                 (string)    root dir to search from (default:
+                                            cwd, use utils.buffer_dir() to
+                                            search relative to open buffer)
+            {search}              (string)    the query to search
+            {search_dirs}         (table)     directory/directories to search in
+            {use_regex}           (boolean)   if true, special characters won't be
+                                            escaped, allows for using regex
+                                            (default: false)
+            {word_match}          (string)    can be set to `-w` to enable exact
+                                            word matches
+            {additional_args}     (function)  function(opts) which returns a table
+                                            of additional arguments to be passed
+                                            on
+            {disable_coordinates} (boolean)   don't show the line and row numbers
+                                            (default: false)
+            {sort_only_text}      (boolean)   only sort the text, not the file,
+                                            line or row (default: false)
+
+
+    builtin.find_files({opts})                    *telescope.builtin.find_files()*
+        Search for files (respecting .gitignore)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   root dir to search from (default: cwd, use
+                                    utils.buffer_dir() to search relative to
+                                    open buffer)
+            {find_command} (table)    command line arguments for `find_files` to
+                                    use for the search, overrides default:
+                                    config
+            {follow}       (boolean)  if true, follows symlinks (i.e. uses `-L`
+                                    flag for the `find` command)
+            {hidden}       (boolean)  determines whether to show hidden files or
+                                    not (default: false)
+            {no_ignore}    (boolean)  show files ignored by .gitignore, .ignore,
+                                    etc. (default: false)
+            {search_dirs}  (table)    directory/directories to search in
+
+
+    builtin.fd()                                          *telescope.builtin.fd()*
+        This is an alias for the `find_files` picker
+
+
+
+    builtin.treesitter()                          *telescope.builtin.treesitter()*
+        Lists function names, variables, and other symbols from treesitter queries
+        - Default keymaps:
+        - `<C-l>`: show autocompletion menu to prefilter your query by kind of ts
+            node you want to see (i.e. `:var:`)
+
+
+        Options:
+            {show_line}         (boolean)  if true, shows the row:column that the
+                                        result is found at (default: true)
+            {bufnr}             (number)   specify the buffer number where
+                                        treesitter should run. (default:
+                                        current buffer)
+            {symbol_highlights} (table)    string -> string. Matches symbol with
+                                        hl_group
+
+
+    builtin.current_buffer_fuzzy_find({opts}) *telescope.builtin.current_buffer_fuzzy_find()*
+        Live fuzzy search inside of the currently open buffer
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {skip_empty_lines} (boolean)  if true we dont display empty lines
+                                        (default: false)
+
+
+    builtin.tags({opts})                                *telescope.builtin.tags()*
+        Lists tags in current directory with tag location file preview (users are
+        required to run ctags -R to generate tags or update when introducing new
+        changes)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}            (string)   root dir to search from (default: cwd, use
+                                        utils.buffer_dir() to search relative to
+                                        open buffer)
+            {ctags_file}     (string)   specify a particular ctags file to use
+            {show_line}      (boolean)  if true, shows the content of the line the
+                                        tag is found on in the picker (default:
+                                        true)
+            {only_sort_tags} (boolean)  if true we will only sort tags (default:
+                                        false)
+            {fname_width}    (number)   defines the width of the filename section
+                                        (default: 30)
+
+
+    builtin.current_buffer_tags({opts})  *telescope.builtin.current_buffer_tags()*
+        Lists all of the tags for the currently open buffer, with a preview
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}            (string)   root dir to search from (default: cwd, use
+                                        utils.buffer_dir() to search relative to
+                                        open buffer)
+            {ctags_file}     (string)   specify a particular ctags file to use
+            {show_line}      (boolean)  if true, shows the content of the line the
+                                        tag is found on in the picker (default:
+                                        true)
+            {only_sort_tags} (boolean)  if true we will only sort tags (default:
+                                        false)
+            {fname_width}    (number)   defines the width of the filename section
+                                        (default: 30)
+
+
+    builtin.git_files({opts})                      *telescope.builtin.git_files()*
+        Fuzzy search for files tracked by Git. This command lists the output of the
+        `git ls-files` command, respects .gitignore, and optionally ignores
+        untracked files
+        - Default keymaps:
+        - `<cr>`: opens the currently selected file
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}                (string)   specify the path of the repo
+            {use_git_root}       (boolean)  if we should use git root as cwd or
+                                            the cwd (important for submodule)
+                                            (default: true)
+            {show_untracked}     (boolean)  if true, adds `--others` flag to
+                                            command and shows untracked files
+                                            (default: true)
+            {recurse_submodules} (boolean)  if true, adds the
+                                            `--recurse-submodules` flag to command
+                                            (default: false)
+            {git_command}        (table)    command that will be exectued.
+                                            {"git","ls-files","--exclude-standard","--cached"}
+
+
+    builtin.git_commits({opts})                  *telescope.builtin.git_commits()*
+        Lists commits for current directory with diff preview
+        - Default keymaps:
+        - `<cr>`: checks out the currently selected commit
+        - `<C-r>m`: resets current branch to selected commit using mixed mode
+        - `<C-r>s`: resets current branch to selected commit using soft mode
+        - `<C-r>h`: resets current branch to selected commit using hard mode
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   specify the path of the repo
+            {use_git_root} (boolean)  if we should use git root as cwd or the cwd
+                                    (important for submodule) (default: true)
+            {git_command}  (table)    command that will be exectued.
+                                    {"git","log","--pretty=oneline","--abbrev-commit","--","."}
+
+
+    builtin.git_bcommits({opts})                *telescope.builtin.git_bcommits()*
+        Lists commits for current buffer with diff preview
+        - Default keymaps or your overriden `select_` keys:
+        - `<cr>`: checks out the currently selected commit
+        - `<c-v>`: opens a diff in a vertical split
+        - `<c-x>`: opens a diff in a horizontal split
+        - `<c-t>`: opens a diff in a new tab
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   specify the path of the repo
+            {use_git_root} (boolean)  if we should use git root as cwd or the cwd
+                                    (important for submodule) (default: true)
+            {current_file} (string)   specify the current file that should be used
+                                    for bcommits (default: current buffer)
+            {git_command}  (table)    command that will be exectued.
+                                    {"git","log","--pretty=oneline","--abbrev-commit"}
+
+
+    builtin.git_branches({opts})                *telescope.builtin.git_branches()*
+        List branches for current directory, with output from `git log --oneline`
+        shown in the preview window
+        - Default keymaps:
+        - `<cr>`: checks out the currently selected branch
+        - `<C-t>`: tracks currently selected branch
+        - `<C-r>`: rebases currently selected branch
+        - `<C-a>`: creates a new branch, with confirmation prompt before creation
+        - `<C-d>`: deletes the currently selected branch, with confirmation
+            prompt before deletion
+        - `<C-y>`: merges the currently selected branch, with confirmation prompt
+            before deletion
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   specify the path of the repo
+            {use_git_root} (boolean)  if we should use git root as cwd or the cwd
+                                    (important for submodule) (default: true)
+            {pattern}      (string)   specify the pattern to match all refs
+
+
+    builtin.git_status({opts})                    *telescope.builtin.git_status()*
+        Lists git status for current directory
+        - Default keymaps:
+        - `<Tab>`: stages or unstages the currently selected file
+        - `<cr>`: opens the currently selected file
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   specify the path of the repo
+            {use_git_root} (boolean)  if we should use git root as cwd or the cwd
+                                    (important for submodule) (default: true)
+            {git_icons}    (table)    string -> string. Matches name with icon
+                                    (see source code, make_entry.lua
+                                    git_icon_defaults)
+
+
+    builtin.git_stash({opts})                      *telescope.builtin.git_stash()*
+        Lists stash items in current repository
+        - Default keymaps:
+        - `<cr>`: runs `git apply` for currently selected stash
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cwd}          (string)   specify the path of the repo
+            {use_git_root} (boolean)  if we should use git root as cwd or the cwd
+                                    (important for submodule) (default: true)
+            {show_branch}  (boolean)  if we should display the branch name for git
+                                    stash entries (default: true)
+
+
+    builtin.builtin({opts})                          *telescope.builtin.builtin()*
+        Lists all of the community maintained pickers built into Telescope
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {include_extensions} (boolean)  if true will show the pickers of the
+                                            installed extensions (default: false)
+
+
+    builtin.resume({opts})                            *telescope.builtin.resume()*
+        Opens the previous picker in the identical state (incl. multi selections)
+        - Notes:
+        - Requires `cache_picker` in setup or when having invoked pickers, see
+            |telescope.defaults.cache_picker|
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {cache_index} (number)  what picker to resume, where 1 denotes most
+                                    recent (default: 1)
+
+
+    builtin.pickers({opts})                          *telescope.builtin.pickers()*
+        Opens a picker over previously cached pickers in their preserved states
+        (incl. multi selections)
+        - Default keymaps:
+        - `<C-x>`: delete the selected cached picker
+        - Notes:
+        - Requires `cache_picker` in setup or when having invoked pickers, see
+            |telescope.defaults.cache_picker|
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.planets({opts})                          *telescope.builtin.planets()*
+        Use the telescope...
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {show_pluto} (boolean)  we love pluto (default: false, because its a
+                                    hidden feature)
+
+
+    builtin.symbols({opts})                          *telescope.builtin.symbols()*
+        Lists symbols inside of `data/telescope-sources/*.json` found in your
+        runtime path or found in `stdpath("data")/telescope/symbols/*.json`. The
+        second path can be customized. We provide a couple of default symbols which
+        can be found in https://github.com/nvim-telescope/telescope-symbols.nvim.
+        This repos README also provides more information about the format in which
+        the symbols have to be.
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {symbol_path} (string)  specify the second path. Default:
+                                    `stdpath("data")/telescope/symbols/*.json`
+            {sources}     (table)   specify a table of sources you want to load
+                                    this time
+
+
+    builtin.commands({opts})                        *telescope.builtin.commands()*
+        Lists available plugin/user commands and runs them on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {show_buf_command} (boolean)  show buf local command (Default: true)
+
+
+    builtin.quickfix({opts})                        *telescope.builtin.quickfix()*
+        Lists items in the quickfix list, jumps to location on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+            {nr}              (number)   specify the quickfix list number
+
+
+    builtin.quickfixhistory({opts})          *telescope.builtin.quickfixhistory()*
+        Lists all quickfix lists in your history and open them with
+        `builtin.quickfix`. It seems that neovim only keeps the full history for 10
+        lists
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.loclist({opts})                          *telescope.builtin.loclist()*
+        Lists items from the current window's location list, jumps to location on
+        `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.oldfiles({opts})                        *telescope.builtin.oldfiles()*
+        Lists previously open files, opens on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {only_cwd} (boolean)  show only files in the cwd (default: false)
+            {cwd_only} (boolean)  alias for only_cwd
+
+
+    builtin.command_history({opts})          *telescope.builtin.command_history()*
+        Lists commands that were executed recently, and reruns them on `<cr>`
+        - Default keymaps:
+        - `<C-e>`: open the command line with the text of the currently selected
+            result populated in it
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.search_history({opts})            *telescope.builtin.search_history()*
+        Lists searches that were executed recently, and reruns them on `<cr>`
+        - Default keymaps:
+        - `<C-e>`: open a search window with the text of the currently selected
+            search result populated in it
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.vim_options({opts})                  *telescope.builtin.vim_options()*
+        Lists vim options, allows you to edit the current value on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.help_tags({opts})                      *telescope.builtin.help_tags()*
+        Lists available help tags and opens a new window with the relevant help
+        info on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {lang}     (string)   specify language (default: vim.o.helplang)
+            {fallback} (boolean)  fallback to en if language isn't installed
+                                (default: true)
+
+
+    builtin.man_pages({opts})                      *telescope.builtin.man_pages()*
+        Lists manpage entries, opens them in a help window on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {sections} (table)     a list of sections to search, use `{ "ALL" }`
+                                to search in all sections (default: { "1" })
+            {man_cmd}  (function)  that returns the man command. (Default:
+                                `apropos ""` on linux, `apropos " "` on macos)
+
+
+    builtin.reloader({opts})                        *telescope.builtin.reloader()*
+        Lists lua modules and reloads them on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {column_len} (number)  define the max column len for the module name
+                                (default: dynamic, longest module name)
+
+
+    builtin.buffers({opts})                          *telescope.builtin.buffers()*
+        Lists open buffers in current neovim instance, opens selected buffer on
+        `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {show_all_buffers}      (boolean)  if true, show all buffers,
+                                            including unloaded buffers
+                                            (default: true)
+            {ignore_current_buffer} (boolean)  if true, don't show the current
+                                            buffer in the list (default: false)
+            {only_cwd}              (boolean)  if true, only show buffers in the
+                                            current working directory (default:
+                                            false)
+            {cwd_only}              (boolean)  alias for only_cwd
+            {sort_lastused}         (boolean)  Sorts current and last buffer to
+                                            the top and selects the lastused
+                                            (default: false)
+            {sort_mru}              (boolean)  Sorts all buffers after most recent
+                                            used. Not just the current and last
+                                            one (default: false)
+            {bufnr_width}           (number)   Defines the width of the buffer
+                                            numbers in front of the filenames
+                                            (default: dynamic)
+
+
+    builtin.colorscheme({opts})                  *telescope.builtin.colorscheme()*
+        Lists available colorschemes and applies them on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {enable_preview} (boolean)  if true, will preview the selected color
+
+
+    builtin.marks({opts})                              *telescope.builtin.marks()*
+        Lists vim marks and their value, jumps to the mark on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.registers({opts})                      *telescope.builtin.registers()*
+        Lists vim registers, pastes the contents of the register on `<cr>`
+        - Default keymaps:
+        - `<C-e>`: edit the contents of the currently selected register
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.keymaps({opts})                          *telescope.builtin.keymaps()*
+        Lists normal mode keymappings, runs the selected keymap on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {modes}     (table)    a list of short-named keymap modes to search
+                                (default: { "n", "i", "c", "x" })
+            {show_plug} (boolean)  if true, the keymaps for which the lhs contains
+                                "<Plug>" are also shown (default: true)
+
+
+    builtin.filetypes({opts})                      *telescope.builtin.filetypes()*
+        Lists all available filetypes, sets currently open buffer's filetype to
+        selected filetype in Telescope on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.highlights({opts})                    *telescope.builtin.highlights()*
+        Lists all available highlights
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.autocommands({opts})                *telescope.builtin.autocommands()*
+        Lists vim autocommands and goes to their declaration on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.spell_suggest({opts})              *telescope.builtin.spell_suggest()*
+        Lists spelling suggestions for the current word under the cursor, replaces
+        word with selected suggestion on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+
+    builtin.tagstack({opts})                        *telescope.builtin.tagstack()*
+        Lists the tag stack for the current window, jumps to tag on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.jumplist({opts})                        *telescope.builtin.jumplist()*
+        Lists items from Vim's jumplist, jumps to location on `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.lsp_references({opts})            *telescope.builtin.lsp_references()*
+        Lists LSP references for word under the cursor, jumps to reference on
+        `<cr>`
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {include_declaration}  (boolean)  include symbol declaration in the
+                                            lsp references (default: true)
+            {include_current_line} (boolean)  include current line (default:
+                                            false)
+            {trim_text}            (boolean)  trim results text (default: false)
+
+
+    builtin.lsp_definitions({opts})          *telescope.builtin.lsp_definitions()*
+        Goto the definition of the word under the cursor, if there's only one,
+        otherwise show all options in Telescope
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {jump_type}       (string)   how to goto definition if there is only
+                                        one, values: "tab", "split", "vsplit",
+                                        "never"
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.lsp_type_definitions({opts}) *telescope.builtin.lsp_type_definitions()*
+        Goto the definition of the type of the word under the cursor, if there's
+        only one, otherwise show all options in Telescope
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {jump_type}       (string)   how to goto definition if there is only
+                                        one, values: "tab", "split", "vsplit",
+                                        "never"
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.lsp_implementations({opts})  *telescope.builtin.lsp_implementations()*
+        Goto the implementation of the word under the cursor if there's only one,
+        otherwise show all options in Telescope
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {jump_type}       (string)   how to goto implementation if there is
+                                        only one, values: "tab", "split",
+                                        "vsplit", "never"
+            {ignore_filename} (boolean)  dont show filenames (default: true)
+            {trim_text}       (boolean)  trim results text (default: false)
+
+
+    builtin.lsp_document_symbols({opts}) *telescope.builtin.lsp_document_symbols()*
+        Lists LSP document symbols in the current buffer
+        - Default keymaps:
+        - `<C-l>`: show autocompletion menu to prefilter your query by type of
+            symbol you want to see (i.e. `:variable:`)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename}   (boolean)       dont show filenames (default:
+                                                true)
+            {show_line}         (boolean)       if true, shows the content of the
+                                                line the tag is found on (default:
+                                                false)
+            {symbols}           (string|table)  filter results by symbol kind(s)
+            {ignore_symbols}    (string|table)  list of symbols to ignore
+            {symbol_highlights} (table)         string -> string. Matches symbol
+                                                with hl_group
+
+
+    builtin.lsp_workspace_symbols({opts}) *telescope.builtin.lsp_workspace_symbols()*
+        Lists LSP document symbols in the current workspace
+        - Default keymaps:
+        - `<C-l>`: show autocompletion menu to prefilter your query by type of
+            symbol you want to see (i.e. `:variable:`)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {query}             (string)        for what to query the workspace
+                                                (default: "")
+            {ignore_filename}   (boolean)       dont show filenames (default:
+                                                false)
+            {show_line}         (boolean)       if true, shows the content of the
+                                                line the tag is found on (default:
+                                                false)
+            {symbols}           (string|table)  filter results by symbol kind(s)
+            {ignore_symbols}    (string|table)  list of symbols to ignore
+            {symbol_highlights} (table)         string -> string. Matches symbol
+                                                with hl_group
+
+
+    builtin.lsp_dynamic_workspace_symbols({opts}) *telescope.builtin.lsp_dynamic_workspace_symbols()*
+        Dynamically lists LSP for all workspace symbols
+        - Default keymaps:
+        - `<C-l>`: show autocompletion menu to prefilter your query by type of
+            symbol you want to see (i.e. `:variable:`)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {ignore_filename}   (boolean)       dont show filenames (default:
+                                                false)
+            {show_line}         (boolean)       if true, shows the content of the
+                                                line the symbol is found on
+                                                (default: false)
+            {symbols}           (string|table)  filter results by symbol kind(s)
+            {ignore_symbols}    (string|table)  list of symbols to ignore
+            {symbol_highlights} (table)         string -> string. Matches symbol
+                                                with hl_group
+
+
+    builtin.diagnostics({opts})                  *telescope.builtin.diagnostics()*
+        Lists diagnostics
+        - Fields:
+        - `All severity flags can be passed as `string` or `number` as per
+            `:vim.diagnostic.severity:`
+        - Default keymaps:
+        - `<C-l>`: show autocompletion menu to prefilter your query with the
+            diagnostic you want to see (i.e. `:warning:`)
+
+
+        Parameters:
+            {opts} (table)  options to pass to the picker
+
+        Options:
+            {bufnr}          (string|number)   if nil
+                                                get diagnostics for all open  buffers.
+                                                Use 0 for current buffer
+            {severity}       (string|number)   filter diagnostics by severity name
+                                            (string) or id (number)
+            {severity_limit} (string|number)   keep diagnostics equal or more
+                                            severe wrt severity name (string)
+                                            or id (number)
+            {severity_bound} (string|number)   keep diagnostics equal or less
+                                            severe wrt severity name (string)
+                                            or id (number)
+            {root_dir}       (string|boolean)  if set to string, get diagnostics
+                                            only for buffers under this dir
+                                            otherwise cwd
+            {no_unlisted}    (boolean)         if true, get diagnostics only for
+                                            listed buffers
+            {no_sign}        (boolean)         hide DiagnosticSigns from Results
+                                            (default: false)
+            {line_width}     (number)          set length of diagnostic entry text
+                                            in Results
+            {namespace}      (number)          limit your diagnostics to a
+                                            specific namespace
 
 
 
@@ -2998,17 +3013,25 @@ builtin.diagnostics({opts})                  *telescope.builtin.diagnostics()*
 
 
     previewers.new_buffer_previewer() *telescope.previewers.new_buffer_previewer()*
-        An interface to instantiate a new `buffer_previewer`. That means that the
-        content actually lives inside a vim buffer which enables us more control
-        over the actual content. For example, we can use `vim.fn.search` to jump to
-        a specific line or reuse buffers/already opened files more easily. This
-        interface is more complex than `termopen_previewer` but offers more
-        flexibility over your content. It was designed to display files but was
-        extended to also display the output of terminal commands.
 
-        In the following options, state table and general tips are mentioned to
+        An interface to instantiate a new `buffer_previewer`.
+        That means that
+        the content actually lives inside a vim buffer which
+        enables us more control over the actual content.
+        For example,
+            we can use `vim.fn.search` to jump to a specific line or
+            reuse buffers/already opened files
+            more easily.
+        This interface is more complex than
+            `termopen_previewer`
+        but offers more flexibility over your content.
+        It was designed to display files
+        but was extended to also display the output of terminal commands.
+
+
+        In the following options,
+        state table and general tips are mentioned to
         make your experience with this previewer more seamless.
-
 
         options:
           - `define_preview = function(self, entry, status)` (required) Is called
@@ -3029,14 +3052,26 @@ builtin.diagnostics({opts})                  *telescope.builtin.diagnostics()*
             For example, that buffer can be opened in a new split, rather than
             recreating that buffer in an action. To access the last buffer number:
             `require('telescope.state').get_global_key("last_preview_bufnr")`
-          - `get_buffer_by_name = function(self, entry)` Allows you to set a unique
-            name for each buffer. This is used for caching purpose.
-            `self.state.bufname` will be nil if the entry was never loaded or the
-            unique name when it was loaded once. For example, useful if you have
-            one file but multiple entries. This happens for grep and lsp builtins.
-            So to make the cache work only load content if `self.state.bufname ~=
-            entry.your_unique_key`
+
+          - `get_buffer_by_name = function(self, entry)
+            Allows you to set a unique  name for each buffer.
+            This is used for caching purpose.
+            if the entry was never loaded
+                `self.state.bufname` will be nil
+             when it was loaded once:
+                the unique name
+
+            For example,
+                useful if you have  one file
+                but multiple entries.
+
+            This happens for grep and lsp builtins.
+            So to make the cache work,
+            Only load content if
+                `self.state.bufname ~=  entry.your_unique_key`
+
           - `title` a static title for example "File Preview"
+
           - `dyn_title(self, entry)` a dynamic title function which gets called
             when config value `dynamic_preview_title = true`
 
@@ -3300,4 +3335,5 @@ builtin.diagnostics({opts})                  *telescope.builtin.diagnostics()*
 
 
     DIY_again
-    DIY_2  vim:filetype=help:syntax=help:
+DIY_again
+DIY_2  vim:filetype=help:syntax=help:

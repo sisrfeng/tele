@@ -12,11 +12,11 @@ local pickers = require('telescope.pickers')
 -- In this example, we use ripgrep to search over your entire directory
 -- live as you type.
 local live_grepper = finders.new_job(function(prompt)
-  if not prompt or prompt == "" then
-    return nil
-  end
+    if not prompt or prompt == "" then
+        return nil
+    end
 
-  return { 'rg', "--vimgrep", prompt}
+    return { 'rg', "--vimgrep", prompt}
 end)
 
 -- Create and run the Picker.
@@ -24,7 +24,7 @@ end)
 -- NOTE: No sorter is needed to be passed.
 --       Results will be returned in the order they are received.
 pickers.new({
-  prompt    = 'Live Grep',
-  finder    = live_grepper,
-  previewer = previewers.vimgrep,
+    prompt    = 'Live Grep',
+    finder    = live_grepper,
+    previewer = previewers.vimgrep,
 }):find()

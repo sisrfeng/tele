@@ -143,7 +143,7 @@ add_selected_to_loclist	lua/telescope/actions/init.lua	/^actions.add_selected_to
 add_selected_to_qflist	lua/telescope/actions/init.lua	/^actions.add_selected_to_qflist = function(prompt_bufnr)$/;"	f	unknown:actions
 add_selection	lua/telescope/actions/init.lua	/^actions.add_selection = function(prompt_bufnr)$/;"	f	unknown:actions
 add_selection	lua/telescope/pickers.lua	/^function Picker:add_selection(row)$/;"	f	unknown:Picker
-add_tag_file	lua/telescope/builtin/internal.lua	/^  local function add_tag_file(lang, file)$/;"	f
+add_tag_file	lua/telescope/builtin/internal.lua	/^    local function add_tag_file(lang, file)$/;"	f
 add_to_loclist	lua/telescope/actions/init.lua	/^actions.add_to_loclist = function(prompt_bufnr)$/;"	f	unknown:actions
 add_to_qflist	lua/telescope/actions/init.lua	/^actions.add_to_qflist = function(prompt_bufnr)$/;"	f	unknown:actions
 add_value	lua/telescope/pickers/layout_strategies.lua	/^  local add_value = function(k, val)$/;"	f
@@ -169,11 +169,11 @@ attach_mappings	lua/telescope/builtin/git.lua	/^    attach_mappings = function(_
 attach_mappings	lua/telescope/builtin/git.lua	/^    attach_mappings = function(prompt_bufnr, map)$/;"	f
 attach_mappings	lua/telescope/builtin/init.lua	/^        defaults.attach_mappings = function(_, map)$/;"	f	unknown:defaults
 attach_mappings	lua/telescope/builtin/init.lua	/^        opts.attach_mappings = function(prompt_bufnr, map)$/;"	f	unknown:opts
-attach_mappings	lua/telescope/builtin/internal.lua	/^    attach_mappings = function()$/;"	f
-attach_mappings	lua/telescope/builtin/internal.lua	/^    attach_mappings = function(_)$/;"	f
-attach_mappings	lua/telescope/builtin/internal.lua	/^    attach_mappings = function(_, _)$/;"	f
-attach_mappings	lua/telescope/builtin/internal.lua	/^    attach_mappings = function(_, map)$/;"	f
-attach_mappings	lua/telescope/builtin/internal.lua	/^    attach_mappings = function(prompt_bufnr)$/;"	f
+attach_mappings	lua/telescope/builtin/internal.lua	/^        attach_mappings = function()$/;"	f
+attach_mappings	lua/telescope/builtin/internal.lua	/^        attach_mappings = function(_)$/;"	f
+attach_mappings	lua/telescope/builtin/internal.lua	/^        attach_mappings = function(_, _)$/;"	f
+attach_mappings	lua/telescope/builtin/internal.lua	/^        attach_mappings = function(_, map)$/;"	f
+attach_mappings	lua/telescope/builtin/internal.lua	/^        attach_mappings = function(prompt_bufnr)$/;"	f
 attach_mappings	lua/tests/automated/telescope_spec.lua	/^          attach_mappings = function()$/;"	f
 auto_find_files	lua/tests/helpers.lua	/^helpers.auto_find_files = function(opts)$/;"	f	unknown:helpers
 autocommands	lua/telescope/builtin/internal.lua	/^internal.autocommands = function(opts)$/;"	f	unknown:internal
@@ -190,7 +190,7 @@ buf_delete	lua/telescope/utils.lua	/^function utils.buf_delete(bufnr)$/;"	f	unkn
 buffer_dir	lua/telescope/utils.lua	/^function utils.buffer_dir()$/;"	f	unknown:utils
 buffers	lua/telescope/builtin/internal.lua	/^internal.buffers = function(opts)$/;"	f	unknown:internal
 bufnrs	lua/telescope/builtin/files.lua	/^    local bufnrs = filter(function(b)$/;"	f
-bufnrs	lua/telescope/builtin/internal.lua	/^  local bufnrs = filter(function(b)$/;"	f
+bufnrs	lua/telescope/builtin/internal.lua	/^    local bufnrs = filter(function(b)$/;"	f
 builtin	lua/telescope/builtin/internal.lua	/^internal.builtin = function(opts)$/;"	f	unknown:internal
 builtin	lua/telescope/previewers/buffer_previewer.lua	/^previewers.builtin = defaulter(function(_)$/;"	f	unknown:previewers
 builtin_picker	lua/telescope/pickers/_test.lua	/^tester.builtin_picker = function(builtin_key, input, test_cases, opts)$/;"	f	unknown:tester
@@ -239,7 +239,7 @@ close	lua/telescope/finders/async_oneshot_finder.lua	/^    close = function()$/;
 close	lua/telescope/finders/async_static_finder.lua	/^    close = function() end,$/;"	f
 close_existing_pickers	lua/telescope/pickers.lua	/^function Picker:close_existing_pickers()$/;"	f	unknown:Picker
 close_pum	lua/telescope/actions/init.lua	/^actions.close_pum = function(_)$/;"	f	unknown:actions
-close_windows	lua/telescope/builtin/internal.lua	/^    picker.close_windows = function(status)$/;"	f	unknown:picker
+close_windows	lua/telescope/builtin/internal.lua	/^        picker.close_windows = function(status)$/;"	f	unknown:picker
 close_windows	lua/telescope/pickers.lua	/^function Picker.close_windows(status)$/;"	f	unknown:Picker
 col	lua/telescope/make_entry.lua	/^      col = function(t)$/;"	f
 color_hash[6]	lua/telescope/previewers/buffer_previewer.lua	/^color_hash[6] = function(line)$/;"	f
@@ -249,7 +249,7 @@ command	lua/telescope/actions/init.lua	/^  command = function(branch_name)$/;"	f
 command_history	lua/telescope/builtin/internal.lua	/^internal.command_history = function(opts)$/;"	f	unknown:internal
 commands	lua/telescope/builtin/internal.lua	/^internal.commands = function(opts)$/;"	f	unknown:internal
 commits	lua/telescope/builtin/git.lua	/^git.commits = function(opts)$/;"	f	unknown:git
-complete	plugin/telescope.lua	/^  complete = function(_, line)$/;"	f
+complete	plugin/telescope.lua	/^    complete = function(_, line)$/;"	f
 complete_tag	lua/telescope/actions/init.lua	/^actions.complete_tag = function(prompt_bufnr)$/;"	f	unknown:actions
 compute	lua/telescope/algos/fzy.lua	/^local function compute(needle, haystack, D, M)$/;"	f
 convert_diagnostic_type	lua/telescope/builtin/diagnostics.lua	/^local convert_diagnostic_type = function(severities, severity)$/;"	f
@@ -274,17 +274,17 @@ cycle_previewers	lua/telescope/pickers.lua	/^function Picker:cycle_previewers(ne
 cycle_previewers_next	lua/telescope/actions/init.lua	/^actions.cycle_previewers_next = function(prompt_bufnr)$/;"	f	unknown:actions
 cycle_previewers_prev	lua/telescope/actions/init.lua	/^actions.cycle_previewers_prev = function(prompt_bufnr)$/;"	f	unknown:actions
 data_directory	lua/telescope/utils.lua	/^function utils.data_directory()$/;"	f	unknown:utils
-data_path	lua/telescope/builtin/internal.lua	/^  local data_path = (function()$/;"	f
+data_path	lua/telescope/builtin/internal.lua	/^    local data_path = (function()$/;"	f
 debounce_leading	lua/telescope/debounce.lua	/^function M.debounce_leading(fn, ms)$/;"	f	unknown:M
 debounce_trailing	lua/telescope/debounce.lua	/^function M.debounce_trailing(fn, ms, first)$/;"	f	unknown:M
 defaulter	lua/telescope/previewers/buffer_previewer.lua	/^local function defaulter(f, default_opts)$/;"	f
 defaults	lua/telescope/builtin/init.lua	/^      local defaults = (function()$/;"	f
-define_preview	lua/telescope/builtin/internal.lua	/^        define_preview = function(self, entry)$/;"	f
-define_preview	lua/telescope/builtin/internal.lua	/^      define_preview = function(self, entry)$/;"	f
+define_preview	lua/telescope/builtin/internal.lua	/^                define_preview = function(self, entry)$/;"	f
+define_preview	lua/telescope/builtin/internal.lua	/^            define_preview = function(self, entry)$/;"	f
 define_preview	lua/telescope/previewers/buffer_previewer.lua	/^    define_preview = function(self, entry, _)$/;"	f
 define_preview	lua/telescope/previewers/buffer_previewer.lua	/^    define_preview = function(self, entry, status)$/;"	f
 definitions	lua/telescope/builtin/lsp.lua	/^lsp.definitions = function(opts)$/;"	f	unknown:lsp
-del_win	lua/telescope/builtin/internal.lua	/^      local function del_win(win_id)$/;"	f
+del_win	lua/telescope/builtin/internal.lua	/^            local function del_win(win_id)$/;"	f
 delete_buffer	lua/telescope/actions/init.lua	/^actions.delete_buffer = function(prompt_bufnr)$/;"	f	unknown:actions
 delete_selection	lua/telescope/pickers.lua	/^function Picker:delete_selection(delete_cb)$/;"	f	unknown:Picker
 descending	lua/telescope/pickers/scroller.lua	/^  descending = function(max_results, num_results)$/;"	f
@@ -299,7 +299,7 @@ docgen	Makefile	/^docgen:$/;"	t
 document_symbols	lua/telescope/builtin/lsp.lua	/^lsp.document_symbols = function(opts)$/;"	f	unknown:lsp
 drop	lua/telescope/pickers/multi.lua	/^function MultiSelect:drop(entry)$/;"	f	unknown:MultiSelect
 drop_all	lua/telescope/actions/init.lua	/^actions.drop_all = function(prompt_bufnr)$/;"	f	unknown:actions
-dyn_title	lua/telescope/builtin/internal.lua	/^      dyn_title = function(_, entry)$/;"	f
+dyn_title	lua/telescope/builtin/internal.lua	/^            dyn_title = function(_, entry)$/;"	f
 dyn_title	lua/telescope/previewers/buffer_previewer.lua	/^    dyn_title = function(_, entry)$/;"	f
 dyn_title	lua/telescope/previewers/term_previewer.lua	/^    dyn_title = function(_, entry)$/;"	f
 dynamic_workspace_symbols	lua/telescope/builtin/lsp.lua	/^lsp.dynamic_workspace_symbols = function(opts)$/;"	f	unknown:lsp
@@ -314,11 +314,11 @@ end]	lua/telescope/config/resolve.lua	/^end] = function(selector, val)$/;"	f
 end]	lua/tests/automated/action_spec.lua	/^      end] = function(e)$/;"	f
 end_test_cases	lua/telescope/pickers/_test.lua	/^local end_test_cases = function()$/;"	f
 enhance	lua/telescope/actions/mt.lua	/^  function mt:enhance(opts)$/;"	f	unknown:mt
-entries	lua/telescope/builtin/internal.lua	/^        local entries = vim.tbl_map(function(i)$/;"	f
+entries	lua/telescope/builtin/internal.lua	/^                local entries = vim.tbl_map(function(i)$/;"	f
 entry_adder	lua/telescope/pickers.lua	/^function Picker:entry_adder(index, entry, _, insert)$/;"	f	unknown:Picker
 entry_maker	lua/telescope/builtin/git.lua	/^      entry_maker = function(entry)$/;"	f
-entry_maker	lua/telescope/builtin/internal.lua	/^      entry_maker = function(entry)$/;"	f
-entry_maker	lua/telescope/builtin/internal.lua	/^      entry_maker = function(line)$/;"	f
+entry_maker	lua/telescope/builtin/internal.lua	/^            entry_maker = function(entry)$/;"	f
+entry_maker	lua/telescope/builtin/internal.lua	/^            entry_maker = function(line)$/;"	f
 entry_to_qf	lua/telescope/actions/init.lua	/^local entry_to_qf = function(entry)$/;"	f
 eq	lua/tests/automated/resolver_spec.lua	/^local eq = function(a, b)$/;"	f
 escape_chars	lua/telescope/builtin/files.lua	/^local escape_chars = function(string)$/;"	f
@@ -326,7 +326,7 @@ excluded	lua/telescope/config.lua	/^                                local exclud
 execute_keymap	lua/telescope/mappings.lua	/^mappings.execute_keymap = function(prompt_bufnr, keymap_identifier)$/;"	f	unknown:mappings
 execute_test_case	lua/telescope/pickers/_test.lua	/^local execute_test_case = function(location, key, spec)$/;"	f
 extract_keymap_opts	lua/telescope/mappings.lua	/^local extract_keymap_opts = function(key_func)$/;"	f
-extract_keymaps	lua/telescope/builtin/internal.lua	/^  local function extract_keymaps(keymaps)$/;"	f
+extract_keymaps	lua/telescope/builtin/internal.lua	/^    local function extract_keymaps(keymaps)$/;"	f
 f	lua/telescope/actions/utils.lua	/^    f = { f, "function" },$/;"	f
 f	scratch/batched_finder_and_sorter.lua	/^local f = function(prompt, process_result, process_complete)$/;"	f
 feed	lua/tests/helpers.lua	/^  local feed = function(text, feed_opts)$/;"	f
@@ -386,8 +386,8 @@ get	lua/telescope/config.lua	/^  local function get(name, default_val)$/;"	f
 get	lua/telescope/pickers/multi.lua	/^function MultiSelect:get()$/;"	f	unknown:MultiSelect
 get_best_result	lua/telescope/pickers/_test_helpers.lua	/^test_helpers.get_best_result = function()$/;"	f	unknown:test_helpers
 get_border_size	lua/telescope/pickers/layout_strategies.lua	/^local get_border_size = function(opts)$/;"	f
-get_buffer_by_name	lua/telescope/builtin/internal.lua	/^        get_buffer_by_name = function()$/;"	f
-get_buffer_by_name	lua/telescope/builtin/internal.lua	/^      get_buffer_by_name = function(_, entry)$/;"	f
+get_buffer_by_name	lua/telescope/builtin/internal.lua	/^                get_buffer_by_name = function()$/;"	f
+get_buffer_by_name	lua/telescope/builtin/internal.lua	/^            get_buffer_by_name = function(_, entry)$/;"	f
 get_buffer_by_name	lua/telescope/previewers/buffer_previewer.lua	/^    get_buffer_by_name = function()$/;"	f
 get_buffer_by_name	lua/telescope/previewers/buffer_previewer.lua	/^    get_buffer_by_name = function(_, entry)$/;"	f
 get_buffer_of_orig	lua/telescope/builtin/git.lua	/^      local get_buffer_of_orig = function(selection)$/;"	f
@@ -505,7 +505,7 @@ if_nil	lua/telescope/utils.lua	/^utils.if_nil = function(x, was_nil, was_not_nil
 imacros	data/options/options.lua	/^local imacros=function(s)$/;"	f
 implementations	lua/telescope/builtin/lsp.lua	/^lsp.implementations = function(opts)$/;"	f	unknown:lsp
 init	lua/telescope/actions/history.lua	/^    init = function(obj)$/;"	f
-inner_loop	lua/telescope/builtin/internal.lua	/^  local inner_loop = function(line)$/;"	f
+inner_loop	lua/telescope/builtin/internal.lua	/^    local inner_loop = function(line)$/;"	f
 insert	lua/telescope/sorters.lua	/^      insert = function(set_, entry)$/;"	f
 insert_symbol	lua/telescope/actions/init.lua	/^actions.insert_symbol = function(prompt_bufnr)$/;"	f	unknown:actions
 insert_symbol_i	lua/telescope/actions/init.lua	/^actions.insert_symbol_i = function(prompt_bufnr)$/;"	f	unknown:actions
@@ -513,7 +513,7 @@ insert_value	lua/telescope/actions/init.lua	/^actions.insert_value = function(pr
 invalid_test_case	lua/telescope/pickers/_test.lua	/^local invalid_test_case = function(k)$/;"	f
 ipairs	lua/telescope/algos/linked_list.lua	/^function LinkedList:ipairs()$/;"	f	unknown:LinkedList
 is_done	lua/telescope/pickers.lua	/^function Picker:is_done()$/;"	f	unknown:Picker
-is_extension	plugin/telescope.lua	/^      local is_extension = vim.tbl_filter(function(val)$/;"	f
+is_extension	plugin/telescope.lua	/^            local is_extension = vim.tbl_filter(function(val)$/;"	f
 is_lower	lua/telescope/algos/fzy.lua	/^local function is_lower(c)$/;"	f
 is_multi_selected	lua/telescope/pickers.lua	/^function Picker:is_multi_selected(entry)$/;"	f	unknown:Picker
 is_path_hidden	lua/telescope/utils.lua	/^utils.is_path_hidden = function(opts, path_display)$/;"	f	unknown:utils
@@ -562,7 +562,7 @@ make_documented_layout	lua/telescope/pickers/layout_strategies.lua	/^local funct
 make_git_branch_action	lua/telescope/actions/init.lua	/^local function make_git_branch_action(opts)$/;"	f
 make_globals	lua/telescope/pickers/_test_helpers.lua	/^test_helpers.make_globals = function()$/;"	f	unknown:test_helpers
 man	lua/telescope/previewers/buffer_previewer.lua	/^previewers.man = defaulter(function(opts)$/;"	f	unknown:previewers
-man_cmd	lua/telescope/builtin/internal.lua	/^  opts.man_cmd = utils.get_lazy_default(opts.man_cmd, function()$/;"	f	unknown:opts
+man_cmd	lua/telescope/builtin/internal.lua	/^    opts.man_cmd = utils.get_lazy_default(opts.man_cmd, function()$/;"	f	unknown:opts
 man_pages	lua/telescope/builtin/internal.lua	/^internal.man_pages = function(opts)$/;"	f	unknown:internal
 manager	lua/tests/automated/entry_manager_spec.lua	/^    local manager = EntryManager:new(1, function()$/;"	f
 manager	lua/tests/automated/entry_manager_spec.lua	/^    local manager = EntryManager:new(2, function()$/;"	f
@@ -578,7 +578,7 @@ mod[k]	lua/telescope/builtin/diagnostics.lua	/^    mod[k] = function(opts)$/;"	f
 mod[k]	lua/telescope/builtin/files.lua	/^    mod[k] = function(opts)$/;"	f
 mod[k]	lua/telescope/builtin/git.lua	/^    mod[k] = function(opts)$/;"	f
 mod[k]	lua/telescope/builtin/init.lua	/^    mod[k] = function(opts)$/;"	f
-mod[k]	lua/telescope/builtin/internal.lua	/^    mod[k] = function(opts)$/;"	f
+mod[k]	lua/telescope/builtin/internal.lua	/^        mod[k] = function(opts)$/;"	f
 mod[k]	lua/telescope/builtin/lsp.lua	/^    mod[k] = function(opts)$/;"	f
 move_selection	lua/telescope/pickers.lua	/^function Picker:move_selection(change)$/;"	f	unknown:Picker
 move_selection_better	lua/telescope/actions/init.lua	/^actions.move_selection_better = function(prompt_bufnr)$/;"	f	unknown:actions
@@ -675,7 +675,7 @@ prepare_match	lua/telescope/builtin/files.lua	/^local function prepare_match(ent
 prepend	lua/telescope/algos/linked_list.lua	/^function LinkedList:prepend(item)$/;"	f	unknown:LinkedList
 preprocess_diag	lua/telescope/builtin/diagnostics.lua	/^  local preprocess_diag = function(diagnostic)$/;"	f
 preview	lua/telescope/previewers/previewer.lua	/^function Previewer:preview(entry, status)$/;"	f	unknown:Previewer
-preview_fn	lua/telescope/builtin/internal.lua	/^        preview_fn = function(_, entry, status)$/;"	f
+preview_fn	lua/telescope/builtin/internal.lua	/^                preview_fn = function(_, entry, status)$/;"	f
 preview_fn	lua/telescope/previewers/buffer_previewer.lua	/^  function opts.preview_fn(self, entry, status)$/;"	f	unknown:opts
 preview_fn	lua/telescope/previewers/term_previewer.lua	/^  function opts.preview_fn(self, entry, status)$/;"	f	unknown:opts
 preview_scrolling_down	lua/telescope/actions/init.lua	/^actions.preview_scrolling_down = function(prompt_bufnr)$/;"	f	unknown:actions
@@ -720,8 +720,8 @@ resolve_pad	lua/telescope/config/resolve.lua	/^  local resolve_pad = function(va
 resolve_table_opts	lua/telescope/config.lua	/^local resolve_table_opts = function(priority, base)$/;"	f
 resolve_width	lua/telescope/config/resolve.lua	/^resolver.resolve_width = function(val)$/;"	f	unknown:resolver
 result[k]	lua/telescope/pickers.lua	/^        result[k] = function(...)$/;"	f
-results	lua/telescope/builtin/internal.lua	/^      results = (function()$/;"	f
-results	lua/telescope/builtin/internal.lua	/^    results = vim.tbl_filter(function(file)$/;"	f
+results	lua/telescope/builtin/internal.lua	/^            results = (function()$/;"	f
+results	lua/telescope/builtin/internal.lua	/^        results = vim.tbl_filter(function(file)$/;"	f
 results	lua/telescope/previewers/buffer_previewer.lua	/^      local results = vim.tbl_filter(function(x)$/;"	f
 results_scrolling_down	lua/telescope/actions/init.lua	/^actions.results_scrolling_down = function(prompt_bufnr)$/;"	f	unknown:actions
 results_scrolling_up	lua/telescope/actions/init.lua	/^actions.results_scrolling_up = function(prompt_bufnr)$/;"	f	unknown:actions
